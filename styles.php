@@ -55,10 +55,88 @@
         .show-grid [class*="span"] [class*="span"] [class*="span"] {
           background-color: #999;
         }
+        form span {
+          position: relative;
+        }
+        span .clear {
+          right: 8px;
+          position: absolute;
+          top: 11px;
+        }
+        .clear {
+          background-image: url(bootstrap/img/glyphicons-halflings.png);
+          background-position-x: -313px;
+          background-position-y: -1px;
+          display: none;
+          /*display: block;*/
+          filter:alpha(opacity=35);
+          height: 12px;
+          opacity:0.35;
+          width: 12px;
+          
+        }
     </style>
     <script>
     $(function() {
         $('.tip').tooltip();
+        $('form input').wrap("<span></span>").after("<span class='clear'></span>");
+        $('form input').focus(function() {
+          if ($(this).val() != '') $('form .clear').show();
+        });
+        $('form input').blur(function() {
+          if ($(this).val() == '') $('form .clear').hide();
+        });
+        $('form input').keyup(function() {
+          if ($(this).val() != '') $('form .clear').show();
+          else $('form .clear').hide();
+        })
+        $('form .clear').click(function() {
+          $(this).prev().val('');
+          $(this).prev().keyup();
+        })
+
+        $('#usedColorSearch .search-query').keyup(function() {
+          var filter = $(this).val();
+          // search colors
+          $('#usedColors a').each(function() {
+            var dataSearch = $(this).attr('data-search');
+            if (dataSearch && dataSearch.search(new RegExp(filter, "i")) < 0) {
+              $(this).hide();
+            } else {
+              $(this).show();
+            }
+          });
+          // search list
+          $('#usedColors .accordion-inner .row').each(function() {
+            var dataSearch = $(this).attr('data-search');
+            if (dataSearch && dataSearch.search(new RegExp(filter, "i")) < 0) {
+              $(this).hide();
+            } else {
+              $(this).show();
+            }
+          });
+        });
+        $('#unusedColorSearch .search-query').keyup(function() {
+          var filter = $(this).val();
+          // search colors
+          $('#unusedColors a').each(function() {
+            var dataSearch = $(this).attr('data-search');
+            if (dataSearch && dataSearch.search(new RegExp(filter, "i")) < 0) {
+              $(this).hide();
+            } else {
+              $(this).show();
+            }
+          });
+          // search list
+          $('#unusedColors .accordion-inner .row').each(function() {
+            var dataSearch = $(this).attr('data-search');
+            if (dataSearch && dataSearch.search(new RegExp(filter, "i")) < 0) {
+              $(this).hide();
+            } else {
+              $(this).show();
+            }
+          });
+        });
     });
     </script>
 </head>
