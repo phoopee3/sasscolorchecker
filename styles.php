@@ -81,14 +81,14 @@
         $('.tip').tooltip();
         $('form input').wrap("<span></span>").after("<span class='clear'></span>");
         $('form input').focus(function() {
-          if ($(this).val() != '') $('form .clear').show();
+          if ($(this).val() != '') $(this).next('.clear').show();
         });
         $('form input').blur(function() {
-          if ($(this).val() == '') $('form .clear').hide();
+          if ($(this).val() == '') $(this).next('.clear').hide();
         });
         $('form input').keyup(function() {
-          if ($(this).val() != '') $('form .clear').show();
-          else $('form .clear').hide();
+          if ($(this).val() != '') $(this).next('.clear').show();
+          else $(this).next('.clear').hide();
         })
         $('form .clear').click(function() {
           $(this).prev().val('');
