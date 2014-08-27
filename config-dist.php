@@ -9,11 +9,11 @@ include('functions.php');
 
 // php variables
 $directoryToScan = './path/to/sass/files/'; // make sure to include trailing /
-$cssFile = './path/to/generated/stylesheet.css'; // only works with one stylesheet right now
+$cssFile         = array('./path/to/generated/stylesheet.css');
 
 // html variables
-$pathTojQuery = "path/to/jquery";
-$pathToBootstrapJS = "path/to/bootstrap.js";
+$pathTojQuery       = "path/to/jquery";
+$pathToBootstrapJS  = "path/to/bootstrap.js";
 $pathToBootstrapCSS = "path/to/bootstrap.css";
-$pathToPrismCSS = "path/to/prism.css";
-$pathToPrismJS = "path/to/prism.js";
+$pathToPrismCSS     = "path/to/prism.css";
+$pathToPrismJS      = "path/to/prism.js";

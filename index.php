@@ -36,7 +36,10 @@ uasort($colors, 'sortByColor');
 $variables = array_merge($variables, $colors);
 
 // search through the generated css file and match the colors
-$css = parseCSS($cssFile);
+$css = array();
+foreach($cssFiles as $cssFile) {
+    $css = array_merge($css, parseCSS($cssFile));
+}
 
 // loop through the variables and find the colors that are used
 ob_start();
